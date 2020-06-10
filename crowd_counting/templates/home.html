@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Crowd Counting</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <p>
+    <img src="{{ url_for('static', filename='css/bangkit.png') }}" style="width: 200px">
+    <br>
+    <img src="{{ url_for('static', filename='css/goo.png') }}" style="width: 200px">
+
+
+    <h2>Crowd Counting</h2>
+    <b>Select your image to predict</b>
+    <br></br>
+    <form method="post" action="/predict" enctype="multipart/form-data">
+        <input type="file" name="file" autocomplete="off" required>
+	    <button type="submit" value="Predict"> Predict </button>
+        <br>
+    </form>
+    <br>
+    {% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		<ul class=flashes>
+		{% for message in messages %}
+		  <li>{{ message }}</li>
+		{% endfor %}
+		</ul>
+	  {% endif %}
+	{% endwith %}
+
+    {% if filename %}
+        <img src="{{ url_for('display_image', filename=filename)}}" 
+        style="width:27%;">
+        <br>
+        {{res}}
+    {% endif %}
+</body>
