@@ -1,2 +1,2 @@
 # Crowd Counting ML Model Deployment
-This is a repo for Bangkit machine learning final project. 
+This is a repo for Bangkit final project to deploy machine learning model on web app using Flask.
