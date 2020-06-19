@@ -37,6 +37,6 @@ Too reduce the wasted time because of counting endlessly every images or forgeti
 Started from somehing simple, The first things we consider to use is a plain CNN with an images as the input and the count as the label. 
 Before we move into the model, we'll show the dataset!
 
-## The Dataset, Why we choose this dataset?
+## The Dataset, Why do we choose this dataset?
 
-## Baseline Model, How's the result?
+## Baseline Model, How does the result?
