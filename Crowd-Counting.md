@@ -43,7 +43,8 @@ Started from something simple, The first thing we consider to use is a plain CNN
 Before we move into the model, we'll show the dataset!
 
 ## The Dataset. Why do we choose this dataset?
-
+The dataset that we use to build the machine learning model is <a href="http://personal.ie.cuhk.edu.hk/~ccloy/downloads_mall_dataset.html">mall dataset<a/>, which is dataset that contains 2000 images with size 480x640 pixels at 3 channels (RGB) as input and its corresponding number of people as the label. Each image has different number of persons. The images are generated from a single CCTV that is placed somewhere in a mall of the same spot, which contains pedestrians who walks around the CCTV. 
+<br/>
 
 ## Baseline Model. How does the result?
 First, we tackle this problem with State of the Art method on Convolutional Neural Network. We create three convolution blocks with ReLU activation. We add BatchNormalization layer inside this block to reduce internal covariate shift of the model. This will cause the model to train more faster. We also add AveragePooling layer to reduce the dimension of the feature map. Reducing the dimension of the feature map will decrease the number of parameters in the model, so the model will much more easy to train. Then, we add Dropout layer to prevent overfitting. At the end of the model, we add GlobalMaxPooling to reduce the depth of the feature map and connect it to final activation ReLU layer. We use MeanSquaredError loss for this task and Adam method to perform the optimization. We also use MeanAbsoluteError for the metrics. After we train the model within 150 iteration, we get MEA around 1 for training set and around 5 for test set.
