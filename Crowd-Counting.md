@@ -106,8 +106,7 @@ We also used the Gaussian kernel to blur the predicted image without affecting t
 
 ### Result of 900 random cropping from test images.
 ![](/images/mae_1.PNG)
-Our model can predict the random cropping image better with the MAE 0.47-0.52. Even though
-To show how better our model predicted the test images we can plot the predicted density map along with the real density map.
+Our model can predict the random cropping image better with the MAE 0.47-0.52. To show how good our model predicted the test images, we can plot the predicted density map along with the real density map.
 ![](/images/Result_1.png)
 Even though there's a difference between the count, the density map still represent the location of people in there
 ![](/images/Result_2.png)
