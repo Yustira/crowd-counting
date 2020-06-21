@@ -21,7 +21,7 @@ def extension(filename):
 	return "." in filename and filename.rsplit(".", 1)[1].lower() in extensions
 
 def model(filename):
-    model = tf.keras.models.load_model("model.h5")
+    model = tf.keras.models.load_model("model_sota.h5")
     src_img = os.path.join(upload_folder, filename)
     img = image.load_img(src_img, target_size=(150, 150))
     img = image.img_to_array(img)
