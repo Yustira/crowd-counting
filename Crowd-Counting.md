@@ -155,7 +155,7 @@ We also do the same thing and checked the distribution of error. The full images
 After checking the result of our model, we can conclude that our model predicts better than the previous baseline model.
 Not only provides a better result, but this model also gives information about people location and density through the density map.
 
-## Refrences
+## References
 
 Cao, X., Wang, Z., Zhao, Y., & Su, F. (2018). Scale aggregation network for accurate and efficient crowd counting. Computer Vision – ECCV 2018, 757-773. https://doi.org/10.1007/978-3-030-01228-1_45
 
