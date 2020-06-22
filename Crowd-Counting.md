@@ -1,5 +1,12 @@
 # Crowd Counting: Video Surveillance Upgrade for Monitoring Physical Distancing (BDG2-D)
 
+By:
+
+Harrianto Sunaryan\
+Iyas Yustira\
+Muhammad Farrel M\
+Rinda Nur Hafizha
+
 ## What is Crowd Counting? Why do we need that?
 Crowd Counting is a technique used to count the number of objects in a picture. 
 Counting how many objects in an image is essential for various industries and researchers. Some of the use-cases are:
@@ -48,13 +55,14 @@ Before we move into the model, we'll show the dataset!
 The dataset that we use to build the machine learning model is <a href="http://personal.ie.cuhk.edu.hk/~ccloy/downloads_mall_dataset.html">mall dataset<a/>, which is dataset that contains 2000 images with size 480x640 pixels at 3 channels (RGB) as input and its corresponding number of people as the label. Each image has different number of persons. The images are generated from a single CCTV that is placed somewhere in a mall of the same spot, which contains pedestrians who walks around the CCTV. 
 <br/>
 
-## Baseline Model. How does the result?
+## Baseline Model
 First, we tackle this problem with State of the Art method on Convolutional Neural Network. We create three convolution blocks with ReLU activation. We add BatchNormalization layer inside this block to reduce internal covariate shift of the model. This will cause the model to train more faster. We also add AveragePooling layer to reduce the dimension of the feature map. Reducing the dimension of the feature map will decrease the number of parameters in the model, so the model will much more easy to train. Then, we add Dropout layer to prevent overfitting. At the end of the model, we add GlobalMaxPooling to reduce the depth of the feature map and connect it to final activation ReLU layer. We use MeanSquaredError loss for this task and Adam method to perform the optimization. We also use MeanAbsoluteError for the metrics. After we train the model within 150 iteration, we get MEA around 1 for training set and around 5 for test set.
 
-Then, we also try to use transfer learning method to tackle this problem. We use MobileNet architecture which have been trained on the ImageNet dataset. We use this model because the model is quite simple compared to another model architecture. We reduce the size of the image from 640x480 to 150x150 while maintain the aspect ratio (by using padding). This was done because the amount of the RAM that we have aren't enough if we don't reduce the size of the image. After we train the model within 150 iteration, we get MEA around 0.5 for training set and around 2 for test set which is an improvement from the SOTA model that we created before.
+![](/images/Plot_baseline.jpeg)
 
+From the plot above, we can see that the model perfom poorly when the number of people in an image is very low or very high.
 
-## Improvement. What can be improved?
+## Improvement
 After we implemented our baseline model successfully, we seek some improvement in order to get the best result.
 ### Change the label to density map 
 ![](/images/comparison.png)
@@ -129,7 +137,7 @@ We also used a plot with the x-axis represents the actual count while the y-axis
 ![](/images/plot_2.png)
 
 The plot above also showed the **distribution of error**.
-A good model shows the random errors, our model represents the random errors but when the actual count increase the predicted count seems to predict lower than the actual.
+A good model shows the random deviations/errors, our model represents the random deviations but when the actual count increase the predicted count seems to predict a bit lower than the actual count.
 This is due to the chance of learning from highly-crowded random cropping is low.
 
 ### Result of 300 original test images.
@@ -150,7 +158,7 @@ The bright pixels in the middle represent several people sitting together. Based
 
 ![](/images/plot_1.png)
 
-We also do the same thing and checked the distribution of error. The full images show the errors without any pattern and even better than the previous plot.
+We also do the same thing and checked the deviations. The full images show that the deviations do not have any pattern and even better than the previous plot.
 
 After checking the result of our model, we can conclude that our model predicts better than the previous baseline model.
 Not only provides a better result, but this model also gives information about people location and density through the density map.
