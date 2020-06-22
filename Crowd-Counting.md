@@ -25,10 +25,12 @@ Counting how many objects in an image is essential for various industries and re
 There are so many others use-cases of crowd counting that are not mentioned here. This shows the usefulness of crowd counting in real life. Because of that reason too, we will focus to develop crowd counting techniques on this project. However, crowd counting is not an easy task if it is done manually by our hand because we can lost count in the middle of doing this laborious task, especially when dealing with object that intersects with each other or dense crowd like these pictures:
 
 ![](/images/density_ex2.jpg)
+
 <div align="center">Source:nutraceuticalbusinessreview.com</div>
 <br /> 
 
 ![](/images/density_ex.jpg)
+
 <div align="center">Source:digest.bps.org.uk by Christian Jarrett</div>
 <br /> 
 
@@ -42,7 +44,7 @@ The system that we build is capable of **counting pedestrians in a mall**. The i
 Started from something simple, The first thing we consider to use is a plain CNN with an image as the input and the count as the label. 
 Before we move into the model, we'll show the dataset!
 
-## The Dataset. Why do we choose this dataset?
+## The Dataset.
 The dataset that we use to build the machine learning model is <a href="http://personal.ie.cuhk.edu.hk/~ccloy/downloads_mall_dataset.html">mall dataset<a/>, which is dataset that contains 2000 images with size 480x640 pixels at 3 channels (RGB) as input and its corresponding number of people as the label. Each image has different number of persons. The images are generated from a single CCTV that is placed somewhere in a mall of the same spot, which contains pedestrians who walks around the CCTV. 
 <br/>
 
@@ -113,8 +115,13 @@ We also used the Gaussian kernel to blur the predicted image without affecting t
 
 ### Result of 900 random cropping from test images.
 ![](/images/mae_1.PNG)
-Our model can predict the random cropping image better with the MAE 0.47-0.52. To show how good our model predicted the test images, we can plot the predicted density map along with the real density map.
+Our model can predict the random cropping image better with the MAE 0.51. To show how good our model predicted the test images, we can plot the predicted density map along with the real density map.
+
 ![](/images/Result_1.png)
+<div align="center">Predicted Density Map (Left), Actual Density Map (Right)</div>
+<br /> 
+
+
 Even though there's a difference between the count, the density map still represent the location of people in there
 ![](/images/Result_2.png)
 
@@ -129,7 +136,11 @@ This is due to the chance of learning from highly-crowded random cropping is low
 ![](/images/mae_2.PNG)
 
 We tested our model to predict the original size of 480 x 640. Surprisingly, our model did a good job of predicting the count with MAE 2.28. 
+
 ![](/images/Result_3.png)
+
+<div align="center">Predicted Density Map (Left), Actual Density Map (Right)</div>
+<br /> 
 
 When we see the image above, we can see the crowded location has brighter pixels, so we plot the density map together with the original image.
 
@@ -143,4 +154,29 @@ We also do the same thing and checked the distribution of error. The full images
 
 After checking the result of our model, we can conclude that our model predicts better than the previous baseline model.
 Not only provides a better result, but this model also gives information about people location and density through the density map.
+
+## Refrences
+
+Cao, X., Wang, Z., Zhao, Y., & Su, F. (2018). Scale aggregation network for accurate and efficient crowd counting. Computer Vision – ECCV 2018, 757-773. https://doi.org/10.1007/978-3-030-01228-1_45
+
+Chen, K., Gong, S., Xiang, T., & Loy, C. C. (2013). Cumulative attribute space for age and crowd density estimation. 2013 IEEE Conference on Computer Vision and Pattern Recognition. https://doi.org/10.1109/cvpr.2013.319
+
+Chen, K., Loy, C. C., Gong, S., & Xiang, T. (2012). Feature mining for localised crowd counting. Procedings of the British Machine Vision Conference 2012. https://doi.org/10.5244/c.26.21
+
+Crowd counting. (n.d.). Kaggle: Your Machine Learning and Data Science Community. https://www.kaggle.com/fmena14/crowd-counting
+
+Li, Y., Zhang, X., & Chen, D. (2018). CSRNet: Dilated Convolutional neural networks for understanding the highly congested scenes. 2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition. https://doi.org/10.1109/cvpr.2018.00120
+
+Loy, C. C., Chen, K., Gong, S., & Xiang, T. (2013). Crowd counting and profiling: Methodology and evaluation. Modeling, Simulation and Visual Analysis of Crowds, 347-382. https://doi.org/10.1007/978-1-4614-8483-7_14
+
+Loy, C. C., Gong, S., & Xiang, T. (2013). From semi-supervised to transfer counting of crowds. 2013 IEEE International Conference on Computer Vision. https://doi.org/10.1109/iccv.2013.270
+
+Mall dataset - Crowd counting dataset. (n.d.). https://personal.ie.cuhk.edu.hk/~ccloy/downloads_mall_dataset.html
+
+Tian, Y., Lei, Y., Zhang, J., & Wang, J. Z. (2020). PaDNet: Pan-density crowd counting. IEEE Transactions on Image Processing, 29, 2714-2727. https://doi.org/10.1109/tip.2019.2952083
+
+Yosinski, J., Clune, J., Bengio, Y., & Lipson, H. (2014). How transferable are features in deep neural networks? Advances in Neural Information Processing Systems 27.
+
+Zhang, Y., Zhou, D., Chen, S., Gao, S., & Ma, Y. (2016). Single-image crowd counting via multi-column Convolutional neural network. 2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR). https://doi.org/10.1109/cvpr.2016.70
+
 
